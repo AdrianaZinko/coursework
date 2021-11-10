@@ -1,16 +1,12 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import PostService from "../API/PostService";
-import Loader from "../components/UI/Loader/Loader";
+import PostService from "../API/PostService"; 
 import { useFetching } from "../hooks/useFetching";
-
- 
- 
 
 function PostIdPage() {
   const params=useParams()
   const [dish,setDish]=useState({})
-  const [fetchPostById, isLoading, error]=useFetching(async(id)=>{
+  const [fetchPostById]=useFetching(async(id)=>{
       const response= await PostService.getById(id)
       setDish(response.data)
   })
